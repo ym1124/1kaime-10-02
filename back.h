@@ -8,7 +8,7 @@ public:
 	void drawPlay();
 	back()
 	{
-		titleback_gh = LoadGraph("Data/Image/BG_1.png", true);
-		playback_gh = LoadGraph("Data/Image/BG_1.png", true);
+		titleback_gh = LoadGraph("Data/Image/BG.png", true);
+		playback_gh = LoadGraph("Data/Image/BG.png", true);
 	}
 };

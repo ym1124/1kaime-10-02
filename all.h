@@ -5,8 +5,8 @@
 #define WINDOW_Y 540
 
 #include "back.h"
-#include "object.h"
 #include "player.h"
+#include "object.h"
 #include "scene.h"
 
 

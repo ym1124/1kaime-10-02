@@ -14,21 +14,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	back *bk = new back();
 	block *bl = new block();
-	block stairs[6];
 	player *pl = new player();
 	scene *se = new scene();
+	block stairs[6];//階段用
+	setStairs(stairs);
+	pl->setPlayerPos();
 
-	for (int i = 0; i < 3; i++)
-	{
-		stairs[i].set_x = 32 * i;
-	}
-	stairs[3].set_x = 32;
-	stairs[3].set_y = -32;
-	stairs[4].set_x = 32 * 2;
-	stairs[4].set_y = -32 * 2;
-	stairs[5].set_x = 32 * 2;
-	stairs[5].set_y = -32;
-	
 	while (ProcessMessage() != -1)
 	{
 		ClearDrawScreen();
@@ -54,15 +45,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			//ブロック描画
 			bl->All();
-			//階段描画　後で書く場所変えるかも
-			for (int i = 0; i < 6; i++)
-			{
-				stairs[i].All();
-				if (CheckHitKey(KEY_INPUT_SPACE))
-				{
-					stairs[i].bl_x = 800;
-				}
-			}
+			//階段描画
+			stairsAll(stairs,pl);
+			if (pl->worldchange == 0)setStairs(stairs);
+			if (pl->worldchange==1)setStairsMirror(stairs);//set系を何回も呼ぶのはよくないので後で変える
+			if (stairs[3].bl_x < 0)resetStairs(stairs);
 
 			if (CheckHitKey(KEY_INPUT_0))
 			{
@@ -70,8 +57,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			}
 
 			//プレイヤー描画
+			pl->setPlayerPos();
+			pl->Jump();
 			pl->Draw();
-
 		}
 
 		ScreenFlip();
