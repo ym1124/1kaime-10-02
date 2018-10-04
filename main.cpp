@@ -44,13 +44,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			cnt++;
 			//”wŒi•`‰æ
 			bk->drawPlay();
-			//ŠK’i•`‰æ
+			//ŠK’iİ’è
 			//******************************
-			setStairsAll(100, cnt, stairs, pl);
-			setStairsAll(700, cnt, stairs1, pl);
-			setStairsAll(400, cnt, stairs, pl);
-			drawStairs(stairs,pl);
-			drawStairs(stairs1, pl);
+			setStairsAll(100, cnt,BLACK_WORLD ,stairs);
+			setStairsAll(700, cnt,WHITE_WORLD, stairs1);
 			//******************************
 			if (CheckHitKey(KEY_INPUT_0))
 			{
