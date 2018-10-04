@@ -61,7 +61,7 @@ public:
 				pos_y += (pos_y - y_prev) + 1;
 				y_prev = y_temp;
 
-				if (pos_y <= 50 && changef == false)
+				if (pos_y <= 150 && changef == false)
 					wcflg = true;
 
 				if (pos_y >= POS_Y_INIT/* && changef == false*/) {
@@ -105,7 +105,7 @@ public:
 				pos_y += (pos_y - y_prev) - 1;
 				y_prev = y_temp;
 
-				if (pos_y >= 400 && changef == false)
+				if (pos_y >= 250 && changef == false)
 					wcflg = false;
 
 				if (pos_y <= POS_Y_INIT) {

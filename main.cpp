@@ -13,17 +13,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetDrawScreen(DX_SCREEN_BACK);
 
 	back *bk = new back();
-	block *bl = new block();
 	player *pl = new player();
 	scene *se = new scene();
-	block stairs[6];//階段用
-	setStairs(stairs);
 	pl->setPlayerPos();
 
+	int cnt = -1,color=GetColor(150,155,155);
+	//階段用******************************************
+	block stairs[6];//bl_xが同じでbl_y	だけが変更されるインスタンスが最初にできるので初期値は大きくしておく(-だとループしてくる)
+	block stairs1[6];
+	//***********************************************
 	while (ProcessMessage() != -1)
 	{
 		ClearDrawScreen();
-
 		//タイトル画面
 		if (se->nowscene == TITLE)
 		{
@@ -40,38 +41,37 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		if (se->nowscene == PLAY)
 		{
+			cnt++;
 			//背景描画
 			bk->drawPlay();
-
-			//ブロック描画
-			bl->All();
 			//階段描画
-			stairsAll(stairs,pl);
-			if (pl->worldchange == 0)setStairs(stairs);
-			if (pl->worldchange==1)setStairsMirror(stairs);//set系を何回も呼ぶのはよくないので後で変える
-			if (stairs[3].bl_x < 0)resetStairs(stairs);
-
+			//******************************
+			setStairsAll(100, cnt, stairs, pl);
+			setStairsAll(700, cnt, stairs1, pl);
+			setStairsAll(400, cnt, stairs, pl);
+			drawStairs(stairs,pl);
+			drawStairs(stairs1, pl);
+			//******************************
 			if (CheckHitKey(KEY_INPUT_0))
 			{
 				se->doTitlemode();
 			}
-
 			//プレイヤー描画
 			pl->setPlayerPos();
 			pl->Jump();
 			pl->Draw();
 		}
+		DrawFormatString(30, 30, color, "cnt:%d", cnt);
 
 		ScreenFlip();
+		if (CheckHitKey(KEY_INPUT_ESCAPE) == 1)
+		{
+			delete bk;
+
+			break;
+		}
 	}
 
-	delete bk;
-	delete bl;
-
 	DxLib_End();
-
-
-
 	return 0;
-
 }

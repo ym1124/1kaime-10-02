@@ -1,5 +1,6 @@
 #pragma once
 #include "DxLib.h"
+#include <cstdlib>
 
 #define WINDOW_X 960
 #define WINDOW_Y 540
