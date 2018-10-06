@@ -1,17 +1,25 @@
-#pragma once
-enum { TITLE, PLAY, OVER, CLEAR };
+#pragma once#include "all.h"
+#include "UI.h"
+enum { TITLE, PLAY, OVER, CLEAR,MENU };
 class scene
 {
 public:
 	int nowscene;
 	int start_timer;
+	int title_string,upperside,downside;
 	bool start_flg;
 	scene()
 	{
 		start_flg = false;
 		start_timer = 0;
-		nowscene = TITLE;
+		upperside = 0;
+		downside = WINDOW_Y;
+		nowscene = TITLE;//é¿ç€ÇÕTITLE
+		title_string = LoadGraph("Data/Image/title_char.png", true);
 	}
-	void doTitlemode();
-	void doPlaymode();
+	void doTitleMode();
+	void doPlayMode();
+	void drawString();
+	void moveString(); 
+	void doOverMode(int *cnt, Score *sc);
 };

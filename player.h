@@ -31,6 +31,8 @@ public:
 	bool wcflg;
 	bool changef;
 
+	int jump_se;
+
 	player()
 	{
 		pl_gh = LoadGraph("Data/Image/player.png");
@@ -42,6 +44,8 @@ public:
 		jcount = 0, jtimer = 0;
 
 		worldchange = BLACK_WORLD;
+
+		jump_se = LoadSoundMem("Data/Music/se/powerup01.mp3");
 
 		jflg = false;
 		wcflg = false;
@@ -56,7 +60,6 @@ public:
 		case BLACK_WORLD:
 
 			if (jflg == true) {
-
 				y_temp = pos_y;
 				pos_y += (pos_y - y_prev) + 1;
 				y_prev = y_temp;
@@ -87,6 +90,7 @@ public:
 			}
 
 			if (CheckHitKey(KEY_INPUT_SPACE) && jflg == false && jcount == 0) {
+				PlaySoundMem(jump_se, DX_PLAYTYPE_BACK);
 				jcount = 1;
 				jflg = true, changef = false;
 				y_prev = pos_y;
@@ -131,6 +135,7 @@ public:
 			}
 
 			if (CheckHitKey(KEY_INPUT_SPACE) && jflg == false && jcount == 0) {
+				PlaySoundMem(jump_se, DX_PLAYTYPE_BACK);
 				jcount = 1;
 				jflg = true, changef = false;
 				y_prev = pos_y;

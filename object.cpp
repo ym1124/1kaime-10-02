@@ -85,5 +85,4 @@ void setStairsAll(int cnt,int nowcnt,int world,block* stairs)
 	setStairs(cnt, nowcnt,world, stairs);
 	changeWorld(stairs);
 	drawStairs(stairs);
-	if (stairs[2].bl_x+stairs[2].set_x+32 < 0)resetStairs(stairs);
 }
