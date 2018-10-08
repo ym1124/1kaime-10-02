@@ -1,4 +1,5 @@
-#include "all.h"
+#pragma once
+#include "effect.h"
 
 void spark::drawSpark()
 {
@@ -106,6 +107,7 @@ void spark::jumpSpark(player *pl)
 		sparkAll(pl->pos_x, pl->pos_y);
 		drawSpark();
 	}
+
 	if (pl->worldchange == WHITE_WORLD&&pl->jflg == true && pl->changef == true)//‚±‚Ì‚Ö‚ñ”÷–­‚â‚©‚ç’¼‚·
 	{
 		if (particle_seflg == false)

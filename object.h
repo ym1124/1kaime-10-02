@@ -1,9 +1,5 @@
-#include "all.h"
-
-#define BLOCK_WIDTH  32
-#define BLOCK_HEIGHT  32
-
-#define SCROLL_SPEED 5
+#include "define.h"
+#include "DxLib.h"
 
 class block
 {

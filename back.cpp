@@ -1,4 +1,6 @@
-#include "all.h"
+#include "object.h"
+#include "back.h"
+#include "define.h"
 
 void back::drawTitle()
 {

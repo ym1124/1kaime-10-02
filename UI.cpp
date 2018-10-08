@@ -1,5 +1,6 @@
 #pragma once
-#include "all.h"
+#include "DxLib.h"
+#include "UI.h"
 
 void Score::setScore(int *cnt)
 {

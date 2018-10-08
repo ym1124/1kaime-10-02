@@ -1,5 +1,6 @@
-
-#include "all.h"
+#pragma once
+#include "scene.h"
+#include "UI.h"
 
 void scene::doTitleMode()
 {

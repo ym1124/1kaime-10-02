@@ -1,4 +1,10 @@
-#include"all.h"
+#include"DxLib.h"
+#include"define.h"
+#include"back.h"
+#include"player.h"
+#include"scene.h"
+#include"effect.h"
+#include"UI.h"
 #include <stdlib.h>
 #include <time.h>
 
@@ -78,11 +84,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			{
 				se->doTitleMode();
 			}
-			if (cnt==2100)
+			if (cnt==3000)
 			{
 				se->nowscene = OVER;
 			}
 			//ƒvƒŒƒCƒ„[•`‰æ
+			if (pl->worldchange == BLACK_WORLD) {
+				pl->Move(pl, stairs);
+			}
+			else {
+				pl->Move(pl, stairs1);
+			}
 			pl->Jump();
 			pl->Draw();
 		}

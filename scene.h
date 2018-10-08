@@ -1,5 +1,8 @@
-#pragma once#include "all.h"
+#pragma once
+#include "define.h"
+#include "DxLib.h"
 #include "UI.h"
+
 enum { TITLE, PLAY, OVER, CLEAR,MENU };
 class scene
 {

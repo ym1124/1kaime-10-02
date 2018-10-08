@@ -1,10 +1,9 @@
 #pragma once
 #include "player.h"
+#include "DxLib.h"
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX_SHOT	4
-#define MAX_SPARK	15//15‚ª—‘z
 
 class spark
 {
