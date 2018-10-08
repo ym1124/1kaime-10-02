@@ -6,12 +6,14 @@ class scene
 public:
 	int nowscene;
 	int start_timer;
+	int select;
 	int title_string,upperside,downside;
 	bool start_flg;
 	scene()
 	{
 		start_flg = false;
 		start_timer = 0;
+		select = 0;
 		upperside = 0;
 		downside = WINDOW_Y;
 		nowscene = TITLE;//é¿ç€ÇÕTITLE

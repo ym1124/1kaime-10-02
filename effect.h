@@ -4,14 +4,13 @@
 #include <time.h>
 
 #define MAX_SHOT	4
-#define MAX_SPARK	15
+#define MAX_SPARK	15//15が理想
 
 class spark
 {
 public:
 	int Valid;	// このデータが使用中か、フラグ
 	int X, Y;	// 火花の位置
-	int particle_timer;
 	int anim_x, anim_y;
 	int anim_x2, anim_y2;
 	int anim_flg;
@@ -20,10 +19,12 @@ public:
 	int Bright;	// 火花の明るさ
 	int particle_se;
 	bool particle_flg;
+	bool particle_seflg;
 	spark()
 	{
 		particle_flg = false;
-		particle_timer = 0;
+		particle_seflg = false;
+		particle_se=0;
 		anim_flg=0;
 		anim_x = 0;
 		anim_y = 0;

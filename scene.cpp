@@ -20,8 +20,24 @@ void scene::doPlayMode()
 
 void scene::doOverMode(int *cnt,Score *sc)
 {
-	if (CheckHitKey(KEY_INPUT_3))*cnt = 0;
-	if (CheckHitKey(KEY_INPUT_4))nowscene = PLAY;
+	if (CheckHitKey(KEY_INPUT_LEFT))
+	{
+		select = 1;
+	}
+	if (CheckHitKey(KEY_INPUT_RIGHT))
+	{
+		select = 2;
+	}
+	if (CheckHitKey(KEY_INPUT_RETURN) && select==1)//リトライ
+	{
+		nowscene = PLAY;
+		*cnt = 0;
+	}
+	if (CheckHitKey(KEY_INPUT_RETURN) && select == 2)//タイトル
+	{
+		nowscene = TITLE;
+		*cnt = 0;
+	}
 	sc->setScore(cnt);
 }
 

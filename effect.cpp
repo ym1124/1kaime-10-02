@@ -48,7 +48,7 @@ void spark::createSpark(int x, int y)
 	if (Valid == 0) {
 		// ‰Î‰Ô‚ÌˆÊ’u‚ðÝ’è
 		X = x;
-		Y = y;
+		Y = WINDOW_Y / 2;
 
 		// ˆÚ“®—Í‚ðÝ’è
 		Sx = GetRand(7) - 3;
@@ -96,24 +96,31 @@ void spark::sparkAll(int x,int y)
 
 void spark::jumpSpark(player *pl)
 {
-	particle_timer++;
-	if (pl->worldchange == BLACK_WORLD&&particle_timer >= 33)//‚±‚Ì‚Ö‚ñ‚Æ
+	if (pl->worldchange == BLACK_WORLD&&pl->jflg==true&&pl->changef==true)//‚±‚Ì‚Ö‚ñ‚Æ
 	{
-		if (particle_timer == 33)PlaySoundMem(particle_se, DX_PLAYTYPE_BACK);
+		if (particle_seflg == false)
+		{
+			PlaySoundMem(particle_se, DX_PLAYTYPE_BACK);
+			particle_seflg = true;
+		}
 		sparkAll(pl->pos_x, pl->pos_y);
 		drawSpark();
 	}
-	if (pl->worldchange == WHITE_WORLD&&particle_timer >= 30)//‚±‚Ì‚Ö‚ñ”÷–­‚â‚©‚ç’¼‚·
+	if (pl->worldchange == WHITE_WORLD&&pl->jflg == true && pl->changef == true)//‚±‚Ì‚Ö‚ñ”÷–­‚â‚©‚ç’¼‚·
 	{
-		if (particle_timer == 33)PlaySoundMem(particle_se, DX_PLAYTYPE_BACK);
+		if (particle_seflg == false)
+		{
+			PlaySoundMem(particle_se, DX_PLAYTYPE_BACK);
+			particle_seflg = true;
+		}
 		sparkAll(pl->pos_x, pl->pos_y);
 		drawSpark();
 	}
 
-	if (particle_flg == true && particle_timer>70)
+	if (pl->jflg == false && pl->changef == true)
 	{
-		particle_timer = 0;
 		particle_flg = false;
+		particle_seflg = false;
 		Bright = -1;
 		drawSpark();
 	}

@@ -176,7 +176,7 @@ public:
 		else {
 			DrawRectGraph(pos_x, pos_y, 32*anim_x, 32, 32, 32, pl_gh, true);
 		}
-		DrawFormatString(300, 100, 256, "pos_x:%d,pos_y:%d,world:%d,change:%d", pos_x, pos_y, worldchange, changef);
+		DrawFormatString(300, 100, 256, "pos_x:%d,pos_y:%d,world:%d,change:%d,jumpflg:%d", pos_x, pos_y, worldchange, changef,jflg);
 
 	}
 };

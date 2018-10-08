@@ -23,18 +23,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	pl->setPlayerPos();
 	sc->getScore();
 	setParticleSe(sparks);
-	//背景レイヤー用準備//採用するならちゃんとしたとこに書く
-	int cloud_gh;
-	int move_x = 0;
-	cloud_gh = LoadGraph("Data/Image/BG_cloud.png", true);
-	//
 	int color = GetColor(150, 155, 155);
 	int j = 0;
 	int cnt = -1;
 	int reset_rng = 0;
-	//**************************************
-	int snowanim_x=0, snowanim_y=0, animCnt=0;
-	int snow_gh = LoadGraph("Data/Image/snow.png");
 	//階段用******************************************
 	block stairs[6];//bl_xが同じでbl_y	だけが変更されるインスタンスが最初にできるので初期値は大きくしておく(-だとループしてくる)
 	block stairs1[6];
@@ -86,7 +78,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			{
 				se->doTitleMode();
 			}
-			if (CheckHitKey(KEY_INPUT_5))
+			if (cnt==2100)
 			{
 				se->nowscene = OVER;
 			}
@@ -95,30 +87,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			pl->Draw();
 		}
 
-		//背景レイヤー用準備
-		if (cnt > 300)
-		{
-			/*move_x -= 5;
-			if (move_x < -WINDOW_X)move_x = 0;
-			DrawModiGraph(
-				move_x, 0,
-				WINDOW_X + move_x, 0,
-				WINDOW_X + move_x, WINDOW_Y,
-				move_x, WINDOW_Y,
-				cloud_gh, true);
-			DrawModiGraph(
-				move_x + WINDOW_X, 0,
-				move_x + WINDOW_X * 2, 0,
-				move_x + WINDOW_X * 2, WINDOW_Y,
-				move_x + WINDOW_X, WINDOW_Y,
-				cloud_gh, true);*/
-
-			DrawRectExtendGraph(0, 0, WINDOW_X, WINDOW_Y, snowanim_x * 256, snowanim_y * 256, 256, 256, snow_gh, true);
-			animCnt++;
-			snowanim_x = animCnt/20% 8;
-			snowanim_y = animCnt/20% 3;
-			/*if (snowanim_y == 3 && snowanim_x == 5) { snowanim_x = 0; snowanim_y = 0; }*/
-		}
+		//背景レイヤー
+		bk->drawLayerAll(cnt);
 
 		if (se->nowscene == OVER)
 		{
