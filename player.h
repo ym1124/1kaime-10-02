@@ -33,6 +33,7 @@ public:
 	bool jflg;
 	bool wcflg;
 	bool changef;
+	bool jumpstartflg;
 
 	int jump_se;
 
@@ -46,7 +47,7 @@ public:
 		y_prev = 0, y_temp = 0;
 		jcount = 0, jtimer = 0;
 
-		worldchange = BLACK_WORLD;
+		worldchange = WHITE_WORLD;
 
 		jump_se = LoadSoundMem("Data/Music/se/powerup01.mp3");
 
@@ -54,6 +55,7 @@ public:
 		jflg = false;
 		wcflg = false;
 		changef = false;
+		jumpstartflg = true;
 	}
 
 	void Jump();

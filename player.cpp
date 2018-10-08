@@ -47,8 +47,8 @@ void player::Jump()
 			y_prev = pos_y;
 			pos_y -= 15;
 		}
-		if (CheckHitKey(KEY_INPUT_NUMPADENTER))
-			worldchange = WHITE_WORLD;
+		/*if (CheckHitKey(KEY_INPUT_NUMPADENTER))
+			worldchange = WHITE_WORLD;*/
 
 		break;
 
@@ -93,8 +93,8 @@ void player::Jump()
 			pos_y += 15;
 		}
 
-		if (CheckHitKey(KEY_INPUT_NUMPADENTER))
-			worldchange = BLACK_WORLD;
+		/*if (CheckHitKey(KEY_INPUT_NUMPADENTER))
+			worldchange = BLACK_WORLD;*/
 		break;
 	}
 }

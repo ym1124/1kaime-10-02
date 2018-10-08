@@ -16,15 +16,15 @@ void back::drawSnow()
 {
 	DrawRectExtendGraph(0, 0, WINDOW_X, WINDOW_Y, snowanim_x * 256, snowanim_y * 256, 256, 256, snow_gh, true);
 	animCnt++;
-	snowanim_x = animCnt / 10 % 8;
-	snowanim_y = animCnt / 80 % 3;
+	snowanim_x = animCnt/8% 8;
+	snowanim_y = animCnt/64% 4;
 
 	/*DrawRectGraph(0, 0, WINDOW_X, WINDOW_Y, snowanim_x * 960, snowanim_y * 540, WINDOW_X, WINDOW_Y, snow_gh, true);
 	animCnt++;
 	snowanim_x = animCnt / 60 % 8;
 	snowanim_y = animCnt / 480% 3;*/
 
-	if (snowanim_y == 3 && snowanim_x == 5) { snowanim_x = 0; snowanim_y = 0; }
+	if (snowanim_y == 3 && snowanim_x == 5) { animCnt=0; }
 }
 
 void back::drawCloud()
@@ -47,6 +47,6 @@ void back::drawCloud()
 
 void back::drawLayerAll(int cnt)
 {
-	if(cnt>500)drawSnow();//cntの位置でエフェクト追加
+	if(cnt>300)drawSnow();//cntの位置でエフェクト追加
 	if(cnt>2000)drawCloud();
 }
