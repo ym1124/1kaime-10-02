@@ -1,5 +1,6 @@
 #pragma once
 #include "effect.h"
+#include "define.h"
 
 void spark::drawSpark()
 {
@@ -97,10 +98,11 @@ void spark::sparkAll(int x,int y)
 
 void spark::jumpSpark(player *pl)
 {
-	if (pl->worldchange == BLACK_WORLD&&pl->jflg==true&&pl->changef==true)//‚±‚Ì‚Ö‚ñ‚Æ
+	if (pl->worldchange == BLACK_WORLD&&pl->jflg==true&&pl->changef==true)
 	{
 		if (particle_seflg == false)
 		{
+			StartJoypadVibration(DX_INPUT_PAD1, 200, 500);
 			PlaySoundMem(particle_se, DX_PLAYTYPE_BACK);
 			particle_seflg = true;
 		}
@@ -108,10 +110,11 @@ void spark::jumpSpark(player *pl)
 		drawSpark();
 	}
 
-	if (pl->worldchange == WHITE_WORLD&&pl->jflg == true && pl->changef == true)//‚±‚Ì‚Ö‚ñ”÷–­‚â‚©‚ç’¼‚·
+	if (pl->worldchange == WHITE_WORLD&&pl->jflg == true && pl->changef == true)
 	{
 		if (particle_seflg == false)
 		{
+			StartJoypadVibration(DX_INPUT_PAD1, 200, 500);
 			PlaySoundMem(particle_se, DX_PLAYTYPE_BACK);
 			particle_seflg = true;
 		}
@@ -130,5 +133,5 @@ void spark::jumpSpark(player *pl)
 
 void setParticleSe(spark *sp)
 {
-	sp[0].particle_se = LoadSoundMem("Data/Music/se/strange_bell.mp3");
+	sp[0].particle_se = LoadSoundMem("Data/Music/se/water-throw-stone2.mp3");
 }

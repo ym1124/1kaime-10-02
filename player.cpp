@@ -5,7 +5,7 @@
 #include "myfunc.h"
 
 //ジャンプ処理
-void player::Jump()
+void player::Jump(int pad)
 {
 	switch (worldchange) {
 
@@ -40,7 +40,7 @@ void player::Jump()
 			}
 		}
 
-		if (CheckHitKey(KEY_INPUT_SPACE) && jflg == false && jcount == 0) {
+		if ((CheckHitKey(KEY_INPUT_SPACE) || pad&PAD_INPUT_A) && jflg == false && jcount == 0) {
 			PlaySoundMem(jump_se, DX_PLAYTYPE_BACK);
 			jcount = 1;
 			jflg = true, changef = false;
@@ -85,7 +85,7 @@ void player::Jump()
 			}
 		}
 
-		if (CheckHitKey(KEY_INPUT_SPACE) && jflg == false && jcount == 0) {
+		if ((CheckHitKey(KEY_INPUT_SPACE)|| pad&PAD_INPUT_A) && jflg == false && jcount == 0) {
 			PlaySoundMem(jump_se, DX_PLAYTYPE_BACK);
 			jcount = 1;
 			jflg = true, changef = false;
@@ -134,6 +134,16 @@ void player::setPlayerPos()
 			pos_x = (int)(POS_X_INIT);
 			pos_y = (int)(POS_Y_INIT)+32;
 		}
+	}
+}
+
+void player::banJump(int pad)
+{
+	if (jumpstartflg == true)//タイトル画面で連続ジャンプさせない処理
+	{
+		Jump(pad);
+		if (worldchange == BLACK_WORLD&&pos_y == POS_Y_INIT)
+			jumpstartflg = false;
 	}
 }
 

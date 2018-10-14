@@ -26,7 +26,16 @@ void Score::getScore()
 	//fclose(fp);
 }
 
-void Score::viewScore()
+void Score::viewEndScore()
 {
-	DrawFormatString(100, 100, GetColor(150, 155, 155), "今回のスコア:%d,最高スコア:%d", nowscore, highscore);//名前入れたい
+	SetFontSize(50);
+	if(overCnt/60%2==1)
+	DrawFormatString(50, 50, GetColor(255, 255, 255), "今回のスコア:%d 最高スコア:%d", nowscore, highscore);//名前入れたい
+}
+
+void Score::viewScore(int cnt)
+{
+	nowscore = cnt;
+	SetFontSize(20);
+	DrawFormatString(50, 50, GetColor(0, 0, 0), "スコア:%d", nowscore);
 }

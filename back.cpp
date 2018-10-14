@@ -47,6 +47,9 @@ void back::drawCloud()
 
 void back::drawLayerAll(int cnt)
 {
-	if(cnt>300)drawSnow();//cntの位置でエフェクト追加
-	if(cnt>2000)drawCloud();
+	if (cnt < 500000) {
+		if (cnt > 300)drawSnow();//cntの位置でエフェクト追加
+		if (cnt > 2000)drawCloud();
+	}
+	if (cnt >= 500000)drawSnow();//overMode用のダミーカウント
 }

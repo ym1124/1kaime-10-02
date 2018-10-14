@@ -1,7 +1,8 @@
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
 #include "DxLib.h"
-#include "object.h"
+class block;
+class coin;
 
 #define PL_WIDTH 24
 //#define PL_HEIGHT 32
@@ -58,12 +59,12 @@ public:
 		jumpstartflg = true;
 	}
 
-	void Jump();
+	void Jump(int pad);
 
 	void Move(player*, block*);
 
 	void setPlayerPos();
-
+	void banJump(int pad);
 	void Draw();
 };
 
